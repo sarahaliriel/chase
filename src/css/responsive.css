@@ -1,0 +1,393 @@
+/* ============================================
+   RESPONSIVE.CSS - Animations, Media Queries
+   ============================================ */
+
+@keyframes blink {
+  from {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-4deg);
+  }
+
+  50% {
+    transform: translateY(-18px) rotate(5deg);
+  }
+}
+
+@keyframes glitch {
+  0%,
+  92%,
+  100% {
+    transform: translate(0);
+    opacity: 0.75;
+  }
+
+  94% {
+    transform: translate(3px, -2px);
+    opacity: 1;
+  }
+
+  96% {
+    transform: translate(-3px, 2px);
+  }
+}
+
+@keyframes dialoguePop {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes memoryImageFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px) rotate(-2deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(-1.2deg);
+  }
+}
+
+@keyframes memoryTextFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes quietPulse {
+  0%, 100% {
+    transform: translateY(0) rotate(-0.08deg);
+  }
+  50% {
+    transform: translateY(-1px) rotate(0.03deg);
+  }
+}
+
+@keyframes secretGlitch {
+  0%, 96%, 100% {
+    transform: none;
+  }
+  97% {
+    transform: translateX(1px) skewX(0.5deg);
+  }
+  98% {
+    transform: translateX(-1px) skewX(-0.4deg);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 900ms ease, transform 900ms ease;
+}
+
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .after-ending-title,
+  .after-ending-content {
+    transition: none;
+    animation: none;
+    transform: none;
+  }
+}
+
+@media (max-width: 850px) {
+  body {
+    font-size: 19px;
+  }
+
+  .section {
+    width: min(100% - 24px, 680px);
+    min-height: auto;
+    padding: 76px 0;
+  }
+
+  .letters-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .friendship-archive {
+    padding: 68px 28px 60px;
+  }
+
+  .timeline-years {
+    grid-template-columns: repeat(5, minmax(102px, 1fr));
+    overflow-x: auto;
+    padding: 10px 4px 18px;
+    scroll-snap-type: x proximity;
+  }
+
+  .timeline-memory {
+    scroll-snap-align: center;
+  }
+
+  .floating-doodle {
+    font-size: 30px;
+  }
+
+  .doodle-star {
+    left: 4%;
+  }
+
+  .doodle-heart {
+    right: 4%;
+  }
+
+  .video-gift-card {
+    grid-template-columns: 1fr;
+  }
+
+  .home-footer {
+    width: min(100%, calc(100% - 24px));
+    margin-bottom: 24px;
+  }
+
+  .game-card,
+  .game-complete-card {
+    padding: 24px;
+  }
+
+  .game-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .game-stage {
+    min-height: 48vh;
+  }
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+  .music-toggle {
+    top: 12px;
+    right: 12px;
+    padding: 10px 12px;
+    font-size: 9px;
+  }
+
+  .friendship-counter {
+    top: 56px;
+    left: 12px;
+    right: 12px;
+    transform: none;
+    width: calc(100% - 24px);
+    padding: 8px 12px;
+    font-size: 8px;
+    gap: 6px;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+
+  .friendship-counter strong {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .hero-art {
+    width: min(430px, 92vw);
+    padding: 12px;
+  }
+
+  .memory-portraits {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .memory-photo img {
+    aspect-ratio: 1 / 1;
+  }
+
+  .letters-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .note {
+    min-height: 160px;
+  }
+
+  .friendship-archive {
+    padding: 54px 20px;
+    transform: rotate(0deg);
+  }
+
+  .timeline-line {
+    top: 86px;
+    bottom: 76px;
+    left: 13px;
+    right: auto;
+    width: 18px;
+    height: auto;
+    transform: none;
+  }
+
+  .timeline-line::before {
+    top: 0;
+    left: 8px;
+    width: 2px;
+    height: 0;
+    background: var(--ink);
+    transition-property: height;
+  }
+
+  .timeline-line::after {
+    top: 2%;
+    left: 3px;
+    width: 14px;
+    height: 92%;
+    border-top: 0;
+    border-left: 1px solid rgba(22, 21, 20, 0.3);
+    transform: rotate(-0.8deg);
+  }
+
+  .timeline-section.is-visible .timeline-line::before {
+    width: 2px;
+    height: 100%;
+  }
+
+  .timeline-years {
+    grid-template-columns: 1fr;
+    gap: 2px;
+    overflow: visible;
+    padding: 8px 0 0;
+  }
+
+  .timeline-memory,
+  .timeline-memory:nth-child(even),
+  .timeline-memory:nth-child(3) {
+    grid-template-columns: 48px 72px 1fr;
+    justify-items: start;
+    align-items: center;
+    min-height: 78px;
+    padding: 8px 0;
+    text-align: left;
+    transform: none;
+  }
+
+  .timeline-dot {
+    align-self: center;
+    width: 26px;
+    height: 26px;
+    margin: 0;
+  }
+
+  .timeline-dot::before {
+    inset: 6px;
+  }
+
+  .timeline-dot::after {
+    top: -18px;
+    font-size: 14px;
+  }
+
+  .timeline-caption {
+    max-width: none;
+    margin: 0;
+    font-size: 21px;
+  }
+
+  .dialogue {
+    padding: 14px;
+  }
+
+  .dialogue-box {
+    padding: 24px 48px 24px 22px;
+  }
+
+  .dialogue-memory img {
+    max-height: 240px;
+  }
+
+  .dialogue-box p,
+  .ending-card p:last-child {
+    font-size: 24px;
+  }
+
+  .video-gift {
+    padding: 12px;
+  }
+
+  .video-gift-card {
+    max-height: calc(100vh - 24px);
+    padding: 12px;
+  }
+
+  .video-letter p:not(.tiny-label) {
+    font-size: 22px;
+  }
+
+  .secret-flower {
+    left: 2%;
+  }
+
+  .secret-window {
+    right: 8%;
+  }
+
+  .after-ending {
+    width: calc(100% - 32px);
+    padding: 28px 0 72px;
+  }
+
+  .after-ending-title {
+    font-size: clamp(34px, 11vw, 46px);
+  }
+
+  .after-ending-whisper,
+  .after-ending-note {
+    font-size: 14px;
+  }
+
+  .after-ending-doodle {
+    bottom: 18px;
+    right: 18px;
+    font-size: 16px;
+  }
+
+  .home-cat {
+    width: 72px;
+    height: 72px;
+  }
+
+  .game-close,
+  .game-close-sm {
+    width: 38px;
+    height: 38px;
+    font-size: 28px;
+  }
+
+  .game-stage {
+    min-height: 44vh;
+  }
+}

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>feliz aniversariooo! </title>
+    <link rel="stylesheet" href="src/css/style.css" />
+  </head>
+  <body>
+    
+    <div class="custom-cursor" aria-hidden="true"></div>
+
+    <div id="loader" class="loader">
+      <div class="loader-box">
+        <p>carregando memorias</p>
+        <div class="loading-dots" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <button id="musicToggle" class="music-toggle" type="button" aria-label="ligar ou pausar musica">
+      musica: off
+    </button>
+    <audio id="memoryMusic" src="public/assets/audio/music.mp3" loop preload="auto"></audio>
+    <button id="themeToggle" class="theme-toggle" type="button">
+      modo: white space
+    </button>
+
+    <nav class="friendship-counter" aria-label="contador de tempo de amizade">
+      <span>amigos há:</span>
+      <strong id="friendshipCounter">calculando...</strong>
+    </nav>
+
+    <main class="page">
+
+      <section class="hero section fade-in">
+        <div class="floating-doodle doodle-star">✦</div>
+
+        <div class="hero-art" aria-label="duas fotos favoritas">
+          <div class="memory-portraits">
+            <figure class="memory-photo photo-left">
+              <img src="public/assets/images/portraits/chase.png" alt="Chase" />
+              <figcaption>chase</figcaption>
+            </figure>
+            <figure class="memory-photo photo-right">
+              <img src="public/assets/images/portraits/ali.png" alt="Ali" />
+              <figcaption>ali</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <p class="tiny-label">nois divando</p>
+        <h1>feliz aniversario, chase !</h1>
+        <p class="hero-message">obrigada por fazer parte das minhas memorias favoritas.</p>
+        <p id="typewriter" class="typewriter" aria-live="polite"></p>
+      </section>
+
+      <section class="section letters-section fade-in" id="letters">
+        <div class="section-heading">
+          <p class="tiny-label">abra e leia com calma hein</p>
+          <h2>cartinhas que eu guardei no bolso durante esses anos</h2>
+        </div>
+
+        <div class="letters-grid">
+          <button class="note" type="button" data-message="eu amo o jeito que voce consegue fazer ate os piores dias serem melhores. seja com piadas, imagens de gatinhos e furoes fofos ou so conversando pois sua companhia ja eh algo que alegra! voce eh gentil em coisas onde o mundo esquece de ser.">
+            <span>coisas que eu admiro em voce</span> <!-- boiolice da porra -->
+          </button>
+          <button class="note" type="button" data-message="sinceramente, eu diria que todas as nossas conversas nesses 4 anos de amizade sao dignas desse titulo. aquela simples mensagem onde nos levou ate aqui e viver tudo isso, aquela madrugada onde eu te fiz uma lista ENORME de musicas pra ouvir que ate hoje voce nao ouviu (!!!!!), as nossas calls onde ou eu ficava muda e voce falava - ou eu falava e voce ficava mudo... quando a gente passa(va) horas conversando e o assunto nunca morre porque falamos sobre TUDO, e quando voce respondeu aquelas minhas 500 mensagens no meu aniversario de 18. a lista eh grande e eu poderia passar o dia escrevendo nesse bloquinho, mas cada pedacinho dela eh uma memoria que eu guardo com muito carinho.">
+            <span>memorias favoritas</span>
+          </button>
+          <button class="note" type="button" data-message="obrigada por esses 4 anos de amizade, aturando minhas conversas e meus delirios - meus sumiços e, de repente, minhas bombas de mensagens. obrigada por ser assim. por existir. por nao desistir. por ser a melhor pessoa que eu conheci. obrigada por ser um lugar seguro mesmo quando a vida fica estranha. obrigada por ser o melhor amigo e maninho que eu poderia ter. obrigada por tudo!">
+            <span>obrigada por tudo</span>
+          </button>
+          <button class="note" type="button" data-message="parabens, chase!!! espero que esse ano te traga toda a felicidade que voce merece. toda saude, paz, inteligencia, calma, surpresas gentis e muitos motivos pra continuar. 18 anos eh um marco tao bonito, e eu espero que voce se sinta muito amado e celebrado hoje. voce merece o mundo, e eu espero que esse seja um ano onde voce consiga sentir isso de verdade.">
+            <span>feliz aniversario</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="section timeline-section fade-in" id="album">
+        <div class="section-heading">
+          <p class="tiny-label">timeline da amizade</p>
+          <h2>fragmentos da nossa historia (nivers only!)</h2>
+        </div>
+
+        <div class="friendship-archive" aria-label="nossa amizade de 2022 a 2026">
+          <span class="archive-doodle doodle-spark">✦</span>
+          <span class="archive-doodle doodle-love">♡</span>
+          <span class="archive-doodle doodle-flower">✿</span>
+          <span class="archive-doodle doodle-scribble">~~~</span>
+
+          <div class="timeline-line" aria-hidden="true"></div>
+
+          <div class="timeline-years">
+            <button
+              class="timeline-memory"
+              type="button"
+              data-year="2022"
+              data-image="public/assets/images/timeline/1msg.png"
+              data-alt="print antigo de conversa inicial"
+              data-message="a nossa primeira ICONICA troca de mensagens (na dm ne rs). uma conversa tao nada a ver que nos trouxe ate aqui, e gracas a voce. obrigada por me avisar que seu amigo tambem se chamava ali, quem diria que isso render tanto assunto..."
+            >
+              <span class="timeline-dot"></span>
+              <span class="timeline-year">2022</span>
+              <span class="timeline-caption">a primeira mensagem</span>
+            </button>
+
+            <button
+              class="timeline-memory"
+              type="button"
+              data-year="2022"
+              data-image="public/assets/images/timeline/niver-2022.png"
+              data-alt="primeiro aniversario"
+              data-message="o primeiro aniversario que celebrei com voce! em tao pouco tempo de amizade, ja tinhamos conversado mais do que muitas pessoas conversam em anos. desocupados? talvez..."
+            >
+              <span class="timeline-dot"></span>
+              <span class="timeline-year">2022</span>
+              <span class="timeline-caption">14 anos</span>
+            </button>
+
+            <button
+              class="timeline-memory"
+              type="button"
+              data-year="2023"
+              data-image="public/assets/images/timeline/niver-2023.png"
+              data-alt="frame do video presente"
+              data-message="o segundo aniversario e finalmente 1 ano de amizade - a partir dai ja te conhecia como se te conhecesse a vida toda. esse aniversario teve um presente que eu fiz com muito carinho, e que logo logo voce vai poder ver de novo..."
+            >
+              <span class="timeline-dot"></span>
+              <span class="timeline-year">2023</span>
+              <span class="timeline-caption">15 aninhos de esquisitice</span>
+            </button>
+
+            <button
+              class="timeline-memory"
+              type="button"
+              data-year="2024"
+              data-image="public/assets/images/timeline/niver-2024.png"
+              data-alt="16 anos"
+              data-message="o terceiro - e provavel que mais caotico por voce sabe o que... - aniversario que pude celebrar de novo com voce!"
+            >
+              <span class="timeline-dot"></span>
+              <span class="timeline-year">2024</span>
+              <span class="timeline-caption">16 anos</span>
+            </button>
+
+            <button
+              class="timeline-memory"
+              type="button"
+              data-year="2025"
+              data-image="public/assets/images/timeline/niver-2025.png"
+              data-alt="presente de aniversario do Chase"
+              data-message="17 anos de existencia. esse foi o textinho mais meh - mas teve uma surpresa depois, entao nao foi tao ruim!!! acompanhei seu ultimo aniversario como adolescente meudeus..."
+            >
+              <span class="timeline-dot"></span>
+              <span class="timeline-year">2025</span>
+              <span class="timeline-caption">17 aninhos de beleza</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section secret-section fade-in">
+        <button class="secret secret-flower" type="button" data-secret="eai bestola, achou que ia so ter mensagens fofinhas? vai ver black butler!!!">✿</button>
+        <button class="secret secret-dot" type="button" data-secret="te amo muito. vai beber agua tabom?"></button>
+
+        <button id="videoGiftCard" class="ending-card" type="button" aria-label="abrir memoria secreta em video">
+          <p class="tiny-label">clica aqui e veja uma surpresa!!!</p>
+          <h2>e nao importa o que aconteça ou quanto tempo passe...</h2>
+          <p>
+            eu sempre vou ser grata por ter te conhecido. obrigada por existir
+            na minha vida, parabens pelos seus 18 anos, e que a gente tenha muitos mais anos de amizade!
+          </p>
+        </button>
+      </section>
+    </main>
+
+    <footer class="home-footer">
+      <button id="gameTrigger" class="home-cat" type="button" aria-label="iniciar mini jogo pegue o gatinho">
+        <img src="public/assets/images/ui/omori-cat.png" alt="Clica para iniciar o jogo" />
+      </button>
+      <p>um pequeno gatinho preto te espera no final da página.</p>
+    </footer>
+
+    <section class="after-ending fade-in" aria-label="memoria escondida final">
+      <p class="after-ending-whisper">...ainda por aqui?</p>
+      <div class="after-ending-space" aria-hidden="true"></div>
+      <div class="after-ending-content">
+        <p class="after-ending-note">a próxima memória ainda está sendo escrita...</p>
+        <h2 class="after-ending-title">te vejo em 2027</h2>
+        <p class="after-ending-note">volte quando for a hora.</p>
+        <span class="after-ending-doodle" aria-hidden="true">✦</span>
+      </div>
+    </section>
+
+    <div id="gameOverlay" class="game-overlay hidden" aria-hidden="true">
+      <div class="game-vignette"></div>
+      <div class="game-card">
+        <div class="game-header">
+          <div>
+            <p class="tiny-label">bem vindo ao museu de memorias</p>
+            <h2>gatinhos pegos: <span id="catsFoundCount">0</span>/18</h2>
+          </div>
+          <button id="closeGame" class="game-close" type="button" aria-label="fechar jogo">×</button>
+        </div>
+
+        <div id="gameStage" class="game-stage" aria-label="cenário do jogo pegue o gatinho">
+          <div class="game-stage-backdrop"></div>
+          <div class="game-cats-layer"></div>
+          <div class="game-grass-overlay" id="gameGrass"></div>
+        </div>
+
+        <p class="game-description">
+          mini game mega hard pra voce gaymer XD
+          no final tem um presente especial!
+        </p>
+      </div>
+    </div>
+
+    <div id="gamePrintViewer" class="print-viewer hidden" aria-hidden="true">
+      <div class="print-viewer-overlay">
+        <button id="closePrintViewer" class="print-close" type="button" aria-label="fechar print">×</button>
+        <div class="print-viewer-card">
+          <img id="printImage" src="" alt="Momento especial com o gatinho" />
+        </div>
+      </div>
+    </div>
+
+    <div id="gameComplete" class="game-complete hidden" aria-hidden="true">
+      <div class="game-complete-card">
+        <p class="tiny-label">recompensa desbloqueada</p>
+        <h2>um presente de amizade para você</h2>
+        <p>clique clique clique</p>
+        <button id="giftBox" class="gift-box" type="button">abrir presente</button>
+        <a id="rewardLink" class="reward-link hidden" target="_blank" rel="noopener noreferrer" href="https://open.spotify.com/">
+          veja a playlistzinha feita especialmente pra voce!
+        </a>
+        <button id="closeComplete" class="game-close-sm" type="button"><</button>
+      </div>
+    </div>
+
+    <div id="videoGift" class="video-gift" aria-hidden="true">
+      <div class="video-gift-card">
+        <button id="closeVideoGift" class="close-video-gift" type="button" aria-label="fechar video">×</button>
+
+        <div class="video-player">
+          <video id="giftVideo" src="public/assets/video/gift-2023.mp4" controls preload="metadata"></video>
+        </div>
+
+        <div class="video-letter">
+          <p class="tiny-label">boaaa, voce chegou no temido easter egg de memorias!</p>
+          <h2>memoria secreta desbloqueada.</h2>
+          <p>
+            lembra desse video? esse video foi um presente que eu fiz pra voce em 2023. ja faz 3
+            anos desde isso, mas ainda parece uma daquelas memorias que ficam
+            guardadas num cantinho bem quieto do coraçao. tantas conversas, piadas internas e momentos que vivemos
+            que nunca perdem a intensidade, mesmo com o tempo passando.
+        </div>
+      </div>
+    </div>
+
+    <div id="dialogue" class="dialogue" aria-hidden="true">
+      <div class="dialogue-box">
+        <button id="closeDialogue" class="close-dialogue" type="button" aria-label="fechar mensagem">×</button>
+        <figure id="dialogueMemory" class="dialogue-memory hidden">
+          <img id="dialogueImage" src="" alt="" />
+        </figure>
+        <p id="dialogueText"></p>
+      </div>
+    </div>
+
+    <div id="achievement" class="achievement">memoria desbloqueada</div>
+
+    <script type="module" src="src/js/script.js"></script>
+  </body>
+</html>
