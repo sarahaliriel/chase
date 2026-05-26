@@ -343,8 +343,11 @@ export function initMinigame(dialogueModule) {
   }
 
   if (gameGrass) {
-    gameGrass.addEventListener("mousemove", handleGrassMove);
-    gameGrass.addEventListener("mouseleave", handleGrassLeave);
+    gameGrass.style.touchAction = "none";
+    gameGrass.addEventListener("pointerdown", handleGrassMove);
+    gameGrass.addEventListener("pointermove", handleGrassMove);
+    gameGrass.addEventListener("pointerleave", handleGrassLeave);
+    gameGrass.addEventListener("pointercancel", handleGrassLeave);
   }
 
   // Video Gift Modal

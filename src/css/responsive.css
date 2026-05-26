@@ -187,6 +187,12 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .after-ending {
+    display: none !important;
+  }
+}
+
 /* Mobile */
 @media (max-width: 560px) {
   .music-toggle {
@@ -385,6 +391,70 @@
     width: 38px;
     height: 38px;
     font-size: 28px;
+  }
+
+  .music-toggle {
+    top: 12px;
+    right: 12px;
+    padding: 10px 12px;
+    font-size: 9px;
+  }
+
+  .theme-toggle {
+    top: 12px;
+    left: 12px;
+    padding: 10px 12px;
+    font-size: 9px;
+  }
+
+  .friendship-counter {
+    top: 60px;
+    left: 12px;
+    right: 12px;
+    width: calc(100% - 24px);
+    padding: 8px 12px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero {
+    padding-top: 88px;
+  }
+
+  .hero-art {
+    width: min(100%, 90vw);
+    max-width: 720px;
+  }
+
+  .home-footer {
+    gap: 12px;
+    padding: 24px 0 16px;
+  }
+
+  .game-card,
+  .game-complete-card {
+    padding: 18px;
+  }
+
+  .game-cat-token {
+    width: 72px;
+    height: 72px;
+  }
+
+  .gift-box {
+    min-width: 180px;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .print-viewer-card img {
+    max-width: 88vw;
+    max-height: 72vh;
+  }
+
+  .print-close {
+    top: -44px;
+    right: 0;
   }
 
   .game-stage {
