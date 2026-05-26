@@ -13,6 +13,7 @@
   visibility: hidden;
   opacity: 0;
   background: rgba(12, 12, 12, 0.82);
+  overflow-y: auto;
   transition: opacity 420ms ease, visibility 420ms ease;
 }
 
@@ -42,7 +43,10 @@
   position: relative;
   width: min(1020px, 100%);
   max-width: 1020px;
+  max-height: calc(100dvh - 48px);
   padding: 32px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   display: grid;
   gap: 20px;
   background: rgba(255, 251, 246, 0.96);

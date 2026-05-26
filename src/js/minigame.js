@@ -404,6 +404,8 @@ export function initMinigame(dialogueModule) {
         closeCompleteScreen();
       } else if (!gameOverlay.classList.contains("hidden")) {
         closeGameOverlay();
+      } else if (videoGift.classList.contains("is-visible")) {
+        closeVideoGift();
       }
     }
   });

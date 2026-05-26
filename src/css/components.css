@@ -9,7 +9,7 @@
   z-index: 30;
   padding: 12px 14px;
   color: var(--ink);
-  font-family: "Courier New", monospace;
+  font-family: var(--pixel-font);
   font-size: 10px;
   background: rgba(255, 253, 248, 0.84);
   border: 2px solid var(--ink);
@@ -54,7 +54,7 @@ body.dark-mode .music-toggle {
   align-items: center;
   padding: 10px 16px;
   color: var(--ink);
-  font-family: "Courier New", monospace;
+  font-family: var(--pixel-font);
   font-size: 10px;
   background: rgba(255, 253, 248, 0.82);
   border: 2px solid var(--ink);
@@ -239,7 +239,7 @@ body.dark-mode .note:hover {
 .doodle-scribble {
   right: 8%;
   bottom: 36px;
-  font-family: "Courier New", monospace;
+  font-family: var(--pixel-font);
   font-size: 22px;
   transform: rotate(8deg);
   animation-delay: 0.8s;
@@ -356,7 +356,7 @@ body.dark-mode .timeline-line::after {
 .timeline-year {
   display: inline-block;
   padding: 4px 10px;
-  font-family: "Courier New", monospace;
+  font-family: var(--pixel-font);
   font-size: 13px;
   background: rgba(245, 231, 184, 0.58);
   border: 1px solid rgba(22, 21, 20, 0.28);
@@ -496,6 +496,7 @@ body.dark-mode .ending-card:hover {
   padding: 22px;
   visibility: hidden;
   background: rgba(22, 21, 20, 0.42);
+  overflow-y: auto;
   opacity: 0;
   transition: opacity 260ms ease, visibility 260ms ease;
 }
@@ -511,9 +512,10 @@ body.dark-mode .ending-card:hover {
   grid-template-columns: minmax(280px, 1.2fr) minmax(260px, 0.8fr);
   gap: 22px;
   width: min(980px, 100%);
-  max-height: min(760px, calc(100vh - 44px));
+  max-height: min(760px, calc(100dvh - 44px));
   padding: 18px;
   overflow: auto;
+  overscroll-behavior: contain;
   background:
     linear-gradient(transparent 34px, rgba(22, 21, 20, 0.05) 35px),
     var(--paper);
@@ -601,6 +603,7 @@ body.dark-mode .close-video-gift {
   padding: 22px;
   visibility: hidden;
   background: rgba(22, 21, 20, 0.18);
+  overflow-y: auto;
   opacity: 0;
   transition: opacity 220ms ease, visibility 220ms ease;
 }
@@ -613,8 +616,11 @@ body.dark-mode .close-video-gift {
 .dialogue-box {
   position: relative;
   width: min(760px, 100%);
+  max-height: calc(100dvh - 44px);
   min-height: 126px;
   padding: 28px 60px 28px 28px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   color: var(--paper);
   background: #111;
   border: 2px solid var(--paper);
@@ -689,7 +695,7 @@ body.dark-mode .dialogue-box {
   z-index: 65;
   padding: 12px 18px;
   color: var(--paper);
-  font-family: "Courier New", monospace;
+  font-family: var(--pixel-font);
   font-size: 10px;
   background: #111;
   border: 2px solid var(--paper);
