@@ -1,0 +1,407 @@
+/* ============================================
+   MEMORY BOX.CSS - Caixa de memórias compartilhadas
+   ============================================ */
+
+.memory-box-section {
+  position: relative;
+  display: grid;
+  align-content: center;
+  overflow: hidden;
+}
+
+.memory-box-area {
+  position: relative;
+  width: min(920px, 100%);
+  min-height: 560px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(90deg, rgba(22, 21, 20, 0.035) 1px, transparent 1px),
+    linear-gradient(transparent 33px, rgba(22, 21, 20, 0.055) 34px),
+    rgba(255, 253, 248, 0.58);
+  background-size: 36px 36px, 100% 34px, auto;
+  border: 2px solid var(--ink);
+  box-shadow: 12px 14px 0 rgba(22, 21, 20, 0.11), 0 18px 36px var(--shadow);
+  transform: rotate(0.4deg);
+}
+
+.memory-box-area::before,
+.memory-box-area::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.memory-box-area::before {
+  top: -13px;
+  right: 16%;
+  width: 132px;
+  height: 30px;
+  background: rgba(245, 231, 184, 0.68);
+  border: 1px solid rgba(22, 21, 20, 0.12);
+  transform: rotate(3deg);
+}
+
+.memory-box-area::after {
+  left: 32px;
+  bottom: 28px;
+  width: 82px;
+  height: 32px;
+  border-bottom: 2px solid rgba(22, 21, 20, 0.3);
+  border-left: 2px solid rgba(22, 21, 20, 0.3);
+  transform: rotate(-9deg);
+}
+
+.memory-box-button {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  width: min(260px, 62vw);
+  padding: 0;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transform: rotate(-1.5deg);
+  transition: transform 220ms ease, filter 220ms ease;
+}
+
+.memory-box-button:hover,
+.memory-box-button:focus-visible {
+  transform: translateY(-7px) rotate(0deg);
+}
+
+.memory-box-button:focus-visible,
+.memory-item:focus-visible {
+  outline: 2px dashed var(--ink);
+  outline-offset: 7px;
+}
+
+.memory-box-button.is-open {
+  animation: memoryBoxOpen 520ms ease both;
+}
+
+.memory-box-button img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(8px 10px 0 rgba(22, 21, 20, 0.14));
+  transition: filter 220ms ease;
+}
+
+.memory-box-button span {
+  padding: 7px 12px;
+  font-family: var(--pixel-font);
+  font-size: 10px;
+  background: rgba(255, 253, 248, 0.84);
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 rgba(22, 21, 20, 0.1);
+}
+
+.memory-items {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.memory-items.is-visible {
+  pointer-events: auto;
+}
+
+.memory-item {
+  --memory-x: 0px;
+  --memory-y: 0px;
+  --memory-rotate: 0deg;
+  --memory-delay: 0ms;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(104px, 15vw, 152px);
+  min-height: 104px;
+  padding: 8px;
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  background: rgba(255, 253, 248, 0.78);
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  box-shadow: 7px 8px 0 rgba(22, 21, 20, 0.12);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.08) rotate(0deg);
+}
+
+.memory-items.is-visible .memory-item {
+  pointer-events: auto;
+  animation:
+    memoryItemBurst 720ms cubic-bezier(0.22, 0.78, 0.24, 1.12) var(--memory-delay) both,
+    memoryItemFloat 4.6s ease-in-out calc(var(--memory-delay) + 740ms) infinite;
+}
+
+.memory-item::before {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  width: 58px;
+  height: 20px;
+  content: "";
+  background: rgba(245, 213, 221, 0.72);
+  border: 1px solid rgba(22, 21, 20, 0.12);
+  transform: translateX(-50%) rotate(-4deg);
+}
+
+.memory-item:nth-child(even)::before {
+  background: rgba(220, 231, 241, 0.72);
+  transform: translateX(-50%) rotate(5deg);
+}
+
+.memory-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1.05;
+  object-fit: contain;
+  filter: drop-shadow(2px 3px 0 rgba(22, 21, 20, 0.11));
+}
+
+.memory-item:hover,
+.memory-item:focus-visible,
+.memory-item.has-been-opened {
+  background: rgba(255, 248, 230, 0.9);
+  box-shadow: 9px 10px 0 rgba(22, 21, 20, 0.16);
+}
+
+.memory-item.has-been-opened::after {
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  color: var(--soft-ink);
+  content: "✓";
+  font-family: var(--pixel-font);
+  font-size: 14px;
+}
+
+.memory-box-final-message {
+  position: absolute;
+  left: 50%;
+  bottom: 34px;
+  z-index: 5;
+  width: min(620px, calc(100% - 48px));
+  margin: 0;
+  padding: 12px 16px;
+  color: var(--soft-ink);
+  font-size: 24px;
+  line-height: 1.08;
+  text-align: center;
+  background: rgba(255, 253, 248, 0.84);
+  border: 2px dashed rgba(22, 21, 20, 0.42);
+  box-shadow: 5px 6px 0 rgba(22, 21, 20, 0.1);
+  transform: translateX(-50%) rotate(-0.5deg);
+  animation: memoryFinalNote 360ms ease both;
+}
+
+body.dark-mode .memory-box-area {
+  background:
+    linear-gradient(90deg, rgba(247, 241, 232, 0.035) 1px, transparent 1px),
+    linear-gradient(transparent 33px, rgba(247, 241, 232, 0.055) 34px),
+    rgba(25, 25, 25, 0.72);
+  box-shadow: 12px 14px 0 rgba(0, 0, 0, 0.34), 0 18px 36px rgba(0, 0, 0, 0.38);
+}
+
+body.dark-mode .memory-box-area::before {
+  background: rgba(122, 98, 48, 0.66);
+  border-color: rgba(247, 241, 232, 0.14);
+}
+
+body.dark-mode .memory-box-area::after {
+  border-color: rgba(247, 241, 232, 0.24);
+}
+
+body.dark-mode .memory-box-button img {
+  filter: drop-shadow(8px 10px 0 rgba(0, 0, 0, 0.36)) brightness(0.9);
+}
+
+body.dark-mode .memory-box-button span,
+body.dark-mode .memory-item,
+body.dark-mode .memory-box-final-message {
+  background: rgba(27, 27, 26, 0.9);
+  box-shadow: 5px 6px 0 rgba(0, 0, 0, 0.34);
+}
+
+body.dark-mode .memory-item:hover,
+body.dark-mode .memory-item:focus-visible,
+body.dark-mode .memory-item.has-been-opened {
+  background: rgba(36, 35, 33, 0.95);
+  box-shadow: 9px 10px 0 rgba(0, 0, 0, 0.42);
+}
+
+body.dark-mode .memory-item::before {
+  background: rgba(82, 45, 57, 0.8);
+  border-color: rgba(247, 241, 232, 0.14);
+}
+
+body.dark-mode .memory-item:nth-child(even)::before {
+  background: rgba(45, 63, 82, 0.8);
+}
+
+.achievement {
+  max-width: calc(100vw - 32px);
+  text-align: center;
+  line-height: 1.35;
+}
+
+@keyframes memoryBoxOpen {
+  0% {
+    transform: rotate(-1.5deg) scale(1);
+  }
+
+  45% {
+    transform: translateY(-8px) rotate(2deg) scale(1.05);
+  }
+
+  100% {
+    transform: rotate(0.5deg) scale(0.96);
+  }
+}
+
+@keyframes memoryItemBurst {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.08) rotate(0deg);
+  }
+
+  58% {
+    opacity: 1;
+    transform: translate(calc(-50% + (var(--memory-x) * 1.06)), calc(-50% + (var(--memory-y) - 28px))) scale(1.08) rotate(calc(var(--memory-rotate) * 1.25));
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--memory-x)), calc(-50% + var(--memory-y))) scale(1) rotate(var(--memory-rotate));
+  }
+}
+
+@keyframes memoryItemFloat {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--memory-x)), calc(-50% + var(--memory-y))) scale(1) rotate(var(--memory-rotate));
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--memory-x)), calc(-50% + var(--memory-y) - 10px)) scale(1) rotate(calc(var(--memory-rotate) + 2deg));
+  }
+}
+
+@keyframes memoryFinalNote {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 12px) rotate(-1.5deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) rotate(-0.5deg);
+  }
+}
+
+@media (max-width: 850px) {
+  .memory-box-area {
+    min-height: 620px;
+  }
+
+  .memory-item {
+    width: clamp(94px, 20vw, 128px);
+  }
+
+  .memory-item-headphones {
+    --memory-x: -220px !important;
+    --memory-y: -146px !important;
+  }
+
+  .memory-item-fandoms {
+    --memory-x: 210px !important;
+    --memory-y: -146px !important;
+  }
+
+  .memory-item-animals {
+    --memory-x: -190px !important;
+    --memory-y: 174px !important;
+  }
+
+  .memory-item-discord {
+    --memory-x: 184px !important;
+    --memory-y: 176px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .memory-box-section {
+    overflow: visible;
+  }
+
+  .memory-box-area {
+    min-height: 680px;
+    padding: 24px 0 116px;
+    overflow: hidden;
+    transform: none;
+  }
+
+  .memory-box-button {
+    width: min(220px, 58vw);
+  }
+
+  .memory-item {
+    width: clamp(82px, 27vw, 108px);
+    min-height: 86px;
+    padding: 6px;
+  }
+
+  .memory-item-headphones {
+    --memory-x: -92px !important;
+    --memory-y: -188px !important;
+  }
+
+  .memory-item-fandoms {
+    --memory-x: 92px !important;
+    --memory-y: -188px !important;
+  }
+
+  .memory-item-animals {
+    --memory-x: -92px !important;
+    --memory-y: 170px !important;
+  }
+
+  .memory-item-discord {
+    --memory-x: 92px !important;
+    --memory-y: 170px !important;
+  }
+
+  .memory-box-final-message {
+    bottom: 22px;
+    width: calc(100% - 32px);
+    font-size: 21px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .memory-box-button,
+  .memory-box-button.is-open,
+  .memory-items.is-visible .memory-item,
+  .memory-box-final-message {
+    transition: none;
+    animation: none;
+  }
+
+  .memory-items.is-visible .memory-item {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--memory-x)), calc(-50% + var(--memory-y))) scale(1) rotate(var(--memory-rotate));
+  }
+}

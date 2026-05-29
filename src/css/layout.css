@@ -107,6 +107,8 @@ body.dark-mode .hero-art {
 .timeline-section {
   display: grid;
   align-content: center;
+  min-height: auto;
+  padding-top: 12px;
 }
 
 .friendship-archive {

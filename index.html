@@ -164,6 +164,72 @@
         </div>
       </section>
 
+      <section class="section memory-box-section fade-in" id="memory-box">
+        <div class="section-heading">
+          <p class="tiny-label">baú de memórias</p>
+          <h2>coisas pequenas que viraram parte das nossas conversas</h2>
+        </div>
+
+        <div class="memory-box-area">
+          <button id="memoryBoxButton" class="memory-box-button" type="button" aria-label="abrir caixa de memórias">
+            <img
+              id="memoryBoxImage"
+              src="public/assets/images/memory-box/bau-fechado.png"
+              data-closed-src="public/assets/images/memory-box/bau-fechado.png"
+              data-open-src="public/assets/images/memory-box/bau-aberto.png"
+              alt="Caixa de memórias fechada"
+            />
+            <span>espalhar memórias</span>
+          </button>
+
+          <div id="memoryItems" class="memory-items" aria-hidden="true">
+            <button
+              class="memory-item memory-item-headphones"
+              type="button"
+              data-title="fone de ouvido"
+              data-message="um fone porque sempre existe uma música que eu ainda preciso te obrigar a ouvir."
+              data-achievement="objeto encontrado: fone de ouvido"
+              style="--memory-x: -320px; --memory-y: -116px; --memory-rotate: -12deg; --memory-delay: 70ms;"
+            >
+              <img src="public/assets/images/memory-box/fone.png" alt="Fone de ouvido" />
+            </button>
+
+            <button
+              class="memory-item memory-item-fandoms"
+              type="button"
+              data-title="pins de fandoms"
+              data-message="um pequeno caos visual representando metade das coisas que fizeram parte das nossas conversas: jogos, animes, séries, músicas e surtos compartilhados.."
+              data-achievement="objeto encontrado: pins de fandoms"
+              style="--memory-x: 292px; --memory-y: -132px; --memory-rotate: 10deg; --memory-delay: 160ms;"
+            >
+              <img src="public/assets/images/memory-box/fandoms.png" alt="Pins de fandoms" />
+            </button>
+
+            <button
+              class="memory-item memory-item-animals"
+              type="button"
+              data-title="gatinhos e furoes"
+              data-message="esses animaizinhos sempre foram uma linguagem universal entre a gente quando conversávamos e um de nós estava mal. às vezes uma imagem de deles já melhorava tudo."
+              data-achievement="objeto encontrado: gatinhos e furoes"
+              style="--memory-x: -238px; --memory-y: 150px; --memory-rotate: 8deg; --memory-delay: 250ms;"
+            >
+              <img src="public/assets/images/memory-box/animais.png" alt="Gatinhos e furoes" />
+            </button>
+
+            <button
+              class="memory-item memory-item-discord"
+              type="button"
+              data-title="discord"
+              data-message="provavelmente o lugar onde a nossa amizade mais existiu: mensagens demais, assuntos demais e uma quantidade preocupante de horas conversando."
+              data-achievement="objeto encontrado: discord"
+              style="--memory-x: 236px; --memory-y: 142px; --memory-rotate: -8deg; --memory-delay: 340ms;"
+            >
+              <img src="public/assets/images/memory-box/discord.png" alt="Objeto do Discord" />
+            </button>
+          </div>
+        </div>
+      </section>
+
       <section class="section secret-section fade-in">
         <button class="secret secret-flower" type="button" data-secret="eai bestola, achou que ia so ter mensagens fofinhas? vai ver black butler!!!">✿</button>
         <button class="secret secret-dot" type="button" data-secret="te amo muito. vai beber agua tabom?"></button>
@@ -183,7 +249,7 @@
       <button id="gameTrigger" class="home-cat" type="button" aria-label="iniciar mini jogo pegue o gatinho">
         <img src="public/assets/images/ui/omori-cat.png" alt="Clica para iniciar o jogo" />
       </button>
-      <p>um pequeno gatinho preto te espera no final da página.</p>
+      <p>um pequeno gatinho mewo te espera no final da página.</p>
     </footer>
 
     <section class="after-ending fade-in" aria-label="memoria escondida final">

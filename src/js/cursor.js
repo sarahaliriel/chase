@@ -13,7 +13,7 @@ export function initCursor() {
   });
 
   const hoverElements = document.querySelectorAll(
-    "a, button, .note, .timeline-memory, .ending-card, .home-cat"
+    "a, button, .note, .timeline-memory, .ending-card, .home-cat, .memory-box-button, .memory-item"
   );
 
   hoverElements.forEach((element) => {

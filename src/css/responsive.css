@@ -132,6 +132,10 @@
     padding: 76px 0;
   }
 
+  .timeline-section {
+    padding-top: 12px;
+  }
+
   .letters-grid {
     grid-template-columns: 1fr 1fr;
   }
