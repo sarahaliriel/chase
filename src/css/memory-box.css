@@ -54,6 +54,25 @@
 }
 
 .memory-box-button {
+  --box-tilt: -1.5deg;
+  --box-lift: 0px;
+  --box-scale-x: 1;
+  --box-scale-y: 1;
+  --lid-gap: 3px;
+  --lid-tilt: 0deg;
+  --lid-lift: 0px;
+  --shake-x-strong: 0px;
+  --shake-x-soft: 0px;
+  --shake-x-strong-negative: 0px;
+  --shake-x-soft-negative: 0px;
+  --shake-y: 0px;
+  --shake-rotate-strong: 0deg;
+  --shake-rotate-soft: 0deg;
+  --shake-scale-x-up: 1;
+  --shake-scale-x-down: 1;
+  --shake-scale-y-up: 1;
+  --shake-scale-y-down: 1;
+
   position: relative;
   z-index: 3;
   display: grid;
@@ -65,13 +84,15 @@
   background: transparent;
   border: 0;
   cursor: pointer;
-  transform: rotate(-1.5deg);
+  transform: translateY(var(--box-lift)) rotate(var(--box-tilt)) scale(var(--box-scale-x), var(--box-scale-y));
+  transform-origin: 50% 78%;
   transition: transform 220ms ease, filter 220ms ease;
 }
 
 .memory-box-button:hover,
 .memory-box-button:focus-visible {
-  transform: translateY(-7px) rotate(0deg);
+  --box-lift: -7px;
+  --box-tilt: 0deg;
 }
 
 .memory-box-button:focus-visible,
@@ -82,6 +103,92 @@
 
 .memory-box-button.is-open {
   animation: memoryBoxOpen 520ms ease both;
+}
+
+.memory-box-button.is-shaking {
+  animation: memoryBoxHeavyShake 410ms cubic-bezier(0.3, 0.02, 0.22, 1) both;
+}
+
+.memory-box-button.is-final-unlock {
+  animation: memoryBoxUnlockShake 560ms cubic-bezier(0.22, 0.72, 0.18, 1.08) both;
+}
+
+.memory-box-button[data-unlock-state="1"] {
+  --box-tilt: -2deg;
+}
+
+.memory-box-button[data-unlock-state="2"] {
+  --box-tilt: -3deg;
+  --box-lift: -1px;
+}
+
+.memory-box-button[data-unlock-state="3"] {
+  --box-tilt: 2deg;
+  --box-lift: -2px;
+}
+
+.memory-box-button[data-unlock-state="4"] {
+  --box-tilt: -4deg;
+  --box-lift: -3px;
+  --box-scale-x: 1.015;
+  --box-scale-y: 0.985;
+}
+
+.memory-box-button[data-unlock-state="5"] {
+  --box-tilt: 3deg;
+  --box-lift: -5px;
+  --box-scale-x: 1.025;
+  --box-scale-y: 0.975;
+}
+
+.memory-box-button[data-unlock-state="6"] {
+  --box-tilt: 0deg;
+  --box-lift: -7px;
+}
+
+.memory-box-button::before,
+.memory-box-button::after {
+  position: absolute;
+  left: 50%;
+  z-index: 2;
+  content: "";
+  pointer-events: none;
+  opacity: 0;
+}
+
+.memory-box-button::before {
+  top: 24%;
+  width: 60%;
+  height: var(--lid-gap);
+  background: rgba(255, 253, 248, 0.76);
+  border: 1px solid rgba(22, 21, 20, 0.34);
+  box-shadow: 0 0 12px rgba(245, 213, 221, 0.44);
+  transform: translateX(-50%) rotate(var(--lid-tilt));
+  transition: opacity 180ms ease, height 180ms ease, transform 180ms ease;
+}
+
+.memory-box-button::after {
+  top: 13%;
+  width: 44%;
+  height: 22%;
+  border-top: 2px dashed rgba(22, 21, 20, 0.3);
+  transform: translateX(-50%) translateY(var(--lid-lift)) rotate(var(--lid-tilt));
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.memory-box-button[data-unlock-state="3"]::before,
+.memory-box-button[data-unlock-state="4"]::before,
+.memory-box-button[data-unlock-state="5"]::before,
+.memory-box-button[data-unlock-state="6"]::before,
+.memory-box-button[data-unlock-state="4"]::after,
+.memory-box-button[data-unlock-state="5"]::after,
+.memory-box-button[data-unlock-state="6"]::after {
+  opacity: 1;
+}
+
+.memory-box-button.is-open::before,
+.memory-box-button.is-open::after {
+  opacity: 0;
 }
 
 .memory-box-button img {
@@ -142,6 +249,30 @@
   animation:
     memoryItemBurst 720ms cubic-bezier(0.22, 0.78, 0.24, 1.12) var(--memory-delay) both,
     memoryItemFloat 4.6s ease-in-out calc(var(--memory-delay) + 740ms) infinite;
+}
+
+.memory-particles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 6;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.memory-particles span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--soft-ink);
+  font-family: var(--pixel-font);
+  font-size: clamp(14px, 2vw, 22px);
+  line-height: 1;
+  opacity: 0;
+  text-shadow: 2px 2px 0 rgba(255, 253, 248, 0.78);
+  transform: translate(-50%, -50%) scale(0.64) rotate(0deg);
+  animation: memoryParticleEscape 1700ms ease-out var(--particle-delay) both;
 }
 
 .memory-item::before {
@@ -227,6 +358,16 @@ body.dark-mode .memory-box-button img {
   filter: drop-shadow(8px 10px 0 rgba(0, 0, 0, 0.36)) brightness(0.9);
 }
 
+body.dark-mode .memory-box-button::before {
+  background: rgba(247, 241, 232, 0.2);
+  border-color: rgba(247, 241, 232, 0.26);
+  box-shadow: 0 0 14px rgba(220, 231, 241, 0.14);
+}
+
+body.dark-mode .memory-box-button::after {
+  border-color: rgba(247, 241, 232, 0.2);
+}
+
 body.dark-mode .memory-box-button span,
 body.dark-mode .memory-item,
 body.dark-mode .memory-box-final-message {
@@ -250,6 +391,11 @@ body.dark-mode .memory-item:nth-child(even)::before {
   background: rgba(45, 63, 82, 0.8);
 }
 
+body.dark-mode .memory-particles span {
+  color: var(--paper);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.42);
+}
+
 .achievement {
   max-width: calc(100vw - 32px);
   text-align: center;
@@ -267,6 +413,58 @@ body.dark-mode .memory-item:nth-child(even)::before {
 
   100% {
     transform: rotate(0.5deg) scale(0.96);
+  }
+}
+
+@keyframes memoryBoxHeavyShake {
+  0% {
+    transform: translateY(var(--box-lift)) translateX(0) rotate(var(--box-tilt)) scale(var(--box-scale-x), var(--box-scale-y));
+  }
+
+  16% {
+    transform: translateY(calc(var(--box-lift) + 2px)) translateX(var(--shake-x-soft-negative)) rotate(calc(var(--box-tilt) - var(--shake-rotate-soft))) scale(var(--shake-scale-x-up), var(--shake-scale-y-down));
+  }
+
+  34% {
+    transform: translateY(calc(var(--box-lift) - var(--shake-y))) translateX(var(--shake-x-strong)) rotate(calc(var(--box-tilt) + var(--shake-rotate-strong))) scale(var(--shake-scale-x-down), var(--shake-scale-y-up));
+  }
+
+  54% {
+    transform: translateY(calc(var(--box-lift) + 1px)) translateX(var(--shake-x-strong-negative)) rotate(calc(var(--box-tilt) - var(--shake-rotate-soft))) scale(var(--shake-scale-x-up), var(--shake-scale-y-down));
+  }
+
+  76% {
+    transform: translateY(calc(var(--box-lift) - 1px)) translateX(var(--shake-x-soft)) rotate(calc(var(--box-tilt) + var(--shake-rotate-soft))) scale(var(--box-scale-x), var(--box-scale-y));
+  }
+
+  100% {
+    transform: translateY(var(--box-lift)) translateX(0) rotate(var(--box-tilt)) scale(var(--box-scale-x), var(--box-scale-y));
+  }
+}
+
+@keyframes memoryBoxUnlockShake {
+  0% {
+    transform: translateY(-4px) translateX(0) rotate(2deg) scale(1.02, 0.98);
+  }
+
+  18% {
+    transform: translateY(1px) translateX(-9px) rotate(-7deg) scale(1.08, 0.92);
+  }
+
+  36% {
+    transform: translateY(-13px) translateX(11px) rotate(8deg) scale(0.96, 1.08);
+  }
+
+  56% {
+    transform: translateY(2px) translateX(-7px) rotate(-5deg) scale(1.06, 0.94);
+  }
+
+  76% {
+    transform: translateY(-16px) translateX(4px) rotate(3deg) scale(0.98, 1.04);
+  }
+
+  100% {
+    transform: translateY(-7px) translateX(0) rotate(0deg) scale(1);
   }
 }
 
@@ -297,6 +495,27 @@ body.dark-mode .memory-item:nth-child(even)::before {
   50% {
     opacity: 1;
     transform: translate(calc(-50% + var(--memory-x)), calc(-50% + var(--memory-y) - 10px)) scale(1) rotate(calc(var(--memory-rotate) + 2deg));
+  }
+}
+
+@keyframes memoryParticleEscape {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+  }
+
+  18% {
+    opacity: 1;
+  }
+
+  64% {
+    opacity: 0.92;
+    transform: translate(calc(-50% + var(--particle-mid-x)), calc(-50% + var(--particle-mid-y))) scale(1) rotate(var(--particle-rotate));
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--particle-x)), calc(-50% + var(--particle-y))) scale(0.82) rotate(var(--particle-rotate-end));
   }
 }
 
@@ -358,6 +577,11 @@ body.dark-mode .memory-item:nth-child(even)::before {
     width: min(220px, 58vw);
   }
 
+  .memory-box-button span {
+    max-width: min(260px, 76vw);
+    line-height: 1.35;
+  }
+
   .memory-item {
     width: clamp(82px, 27vw, 108px);
     min-height: 86px;
@@ -394,10 +618,17 @@ body.dark-mode .memory-item:nth-child(even)::before {
 @media (prefers-reduced-motion: reduce) {
   .memory-box-button,
   .memory-box-button.is-open,
+  .memory-box-button.is-shaking,
+  .memory-box-button.is-final-unlock,
   .memory-items.is-visible .memory-item,
-  .memory-box-final-message {
+  .memory-box-final-message,
+  .memory-particles span {
     transition: none;
     animation: none;
+  }
+
+  .memory-particles {
+    display: none;
   }
 
   .memory-items.is-visible .memory-item {

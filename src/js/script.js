@@ -10,7 +10,7 @@ import { initMusic } from './music.js';
 import { initDialogue, initLoader, initTypewriter, initFadeIn } from './dialogue.js';
 import { initTimeline } from './timeline.js';
 import { initMinigame } from './minigame.js';
-import { initMemoryBox } from './memoryBox.js';
+import { initMemoryBox } from './memoryBox.js?v=memory-unlock';
 
 document.addEventListener('DOMContentLoaded', () => {
   const dialogueModule = initDialogue();
@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initLoader();
   initCounter();
   initCursor();
-  initTheme();
-  initMusic();
+  const musicModule = initMusic();
+  initTheme(musicModule);
   initTypewriter();
   initFadeIn();
   initTimeline();

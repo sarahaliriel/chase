@@ -5,6 +5,6 @@
 @import url('./base.css');
 @import url('./layout.css');
 @import url('./components.css');
-@import url('./memory-box.css');
+@import url('./memory-box.css?v=memory-unlock');
 @import url('./minigame.css');
 @import url('./responsive.css');

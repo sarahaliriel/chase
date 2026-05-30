@@ -203,16 +203,17 @@ body.dark-mode .friendship-archive::after {
   position: relative;
   width: 100vw;
   max-width: none;
-  margin: 0 0 42px;
+  margin: 0;
   min-height: 280vh;
   padding: 60px 0 96px;
   display: grid;
   place-items: center;
   text-align: center;
   color: #fffdf8;
-  background: url("../../public/assets/images/ui/gradient.png") center / cover no-repeat;
+  background: #000 url("../../public/assets/images/ui/gradient.png") center / cover no-repeat;
   overflow: hidden;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 100vh 0 100vh #000;
 }
 
 .after-ending::before,

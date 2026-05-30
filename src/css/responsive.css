@@ -119,6 +119,12 @@
     animation: none;
     transform: none;
   }
+
+  .space-portal-message,
+  body.space-transitioning .memory-photo img {
+    transition: none;
+    animation: none;
+  }
 }
 
 @media (max-width: 850px) {
