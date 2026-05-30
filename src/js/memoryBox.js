@@ -67,7 +67,6 @@ export function initMemoryBox(dialogueModule) {
     boxButton.style.setProperty("--shake-scale-y-up", `${1 + progress * 0.006}`);
     boxButton.style.setProperty("--shake-scale-y-down", `${1 - progress * 0.005}`);
 
-    // Restart the animation even when the player clicks quickly.
     void boxButton.offsetWidth;
 
     if (progress >= REQUIRED_SHAKES) {

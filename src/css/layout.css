@@ -71,7 +71,6 @@ body.dark-mode .hero-art {
   color: #55514b;
 }
 
-/* Floating Doodles */
 .floating-doodle {
   position: absolute;
   color: var(--soft-ink);
@@ -96,14 +95,12 @@ body.dark-mode .hero-art {
   animation-delay: 2.1s;
 }
 
-/* Letters Grid */
 .letters-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
 }
 
-/* Timeline Section */
 .timeline-section {
   display: grid;
   align-content: center;
@@ -180,6 +177,7 @@ body.dark-mode .friendship-archive::after {
   gap: 14px;
 }
 
+
 /* Footer */
 .home-footer {
   width: min(1100px, calc(100% - 32px));
@@ -210,10 +208,17 @@ body.dark-mode .friendship-archive::after {
   place-items: center;
   text-align: center;
   color: #fffdf8;
-  background: #000 url("../../public/assets/images/ui/gradient.png") center / cover no-repeat;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(248, 246, 239, 0) 0%,
+      rgba(248, 246, 239, 0) 8%,
+      rgba(54, 54, 52, 0.45) 34%,
+      rgba(8, 8, 8, 0.95) 72%,
+      #000 100%
+    );
   overflow: hidden;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 100vh 0 100vh #000;
 }
 
 .after-ending::before,
